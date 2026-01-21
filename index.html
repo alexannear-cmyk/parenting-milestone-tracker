@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Parenting Journey - You're Doing Better Than You Think</title>
+  <style>
+    :root {
+      --bg-primary: #0f1419;
+      --bg-secondary: #1a1f2e;
+      --bg-card: #222938;
+      --text-primary: #e8eaed;
+      --text-secondary: #9aa0a6;
+      --accent-blue: #8ab4f8;
+      --accent-green: #81c995;
+      --accent-purple: #c58af9;
+      --accent-orange: #faa356;
+      --border: #3c4043;
+      --success: #34a853;
+      --warning: #fbbc04;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 30px 20px;
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: var(--accent-blue);
+    }
+
+    .tagline {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    .setup-section, .main-app {
+      background: var(--bg-secondary);
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      background: var(--accent-blue);
+      color: var(--bg-primary);
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    button.secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    button.success {
+      background: var(--success);
+    }
+
+    button.small {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .stat-card:nth-child(1) .stat-number { color: var(--accent-blue); }
+    .stat-card:nth-child(2) .stat-number { color: var(--accent-green); }
+    .stat-card:nth-child(3) .stat-number { color: var(--accent-purple); }
+    .stat-card:nth-child(4) .stat-number { color: var(--accent-orange); }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .encouragement-box {
+      background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-blue) 100%);
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .encouragement-text {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: white;
+      line-height: 1.8;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .progress-form {
+      background: var(--bg-card);
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 30px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .timeline {
+      position: relative;
+    }
+
+    .timeline-item {
+      background: var(--bg-card);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 16px;
+      position: relative;
+      padding-left: 50px;
+    }
+
+    .timeline-icon {
+      position: absolute;
+      left: 16px;
+      top: 20px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .timeline-item.milestone .timeline-icon {
+      background: var(--accent-purple);
+    }
+
+    .timeline-item.progress .timeline-icon {
+      background: var(--accent-green);
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      flex: 1;
+    }
+
+    .timeline-date {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .timeline-description {
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+
+    .timeline-type {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .timeline-type.milestone {
+      background: rgba(197, 138, 249, 0.2);
+      color: var(--accent-purple);
+    }
+
+    .timeline-type.progress {
+      background: rgba(129, 201, 149, 0.2);
+      color: var(--accent-green);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-secondary);
+    }
+
+    .empty-state-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .child-info {
+      background: var(--bg-card);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .child-details h2 {
+      margin-bottom: 8px;
+      color: var(--accent-blue);
+    }
+
+    .age-info {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    .delete-btn {
+      background: #d93025;
+      font-size: 0.85rem;
+      padding: 6px 12px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active {
+      background: var(--accent-blue);
+      color: var(--bg-primary);
+      border-color: var(--accent-blue);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .encouragement-text {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Your Parenting Journey</h1>
+      <p class="tagline">You're doing better than you think. Every moment counts.</p>
+    </header>
+
+    <!-- Setup Section -->
+    <div class="setup-section" id="setupSection">
+      <h2 class="section-title">Let's Get Started</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 24px;">
+        Tell me about your little one. This is your safe space to track progress, celebrate wins (big and small),
+        and remember that every hard day is moving you forward.
+      </p>
+
+      <div class="form-group">
+        <label for="childName">Child's Name</label>
+        <input type="text" id="childName" placeholder="What's your child's name?" required>
+      </div>
+
+      <div class="form-group">
+        <label for="childBirthday">Birthday</label>
+        <input type="date" id="childBirthday" required>
+      </div>
+
+      <button onclick="saveChildInfo()">Start Tracking Our Journey</button>
+    </div>
+
+    <!-- Main App -->
+    <div class="main-app hidden" id="mainApp">
+      <!-- Child Info Bar -->
+      <div class="child-info">
+        <div class="child-details">
+          <h2 id="displayChildName"></h2>
+          <div class="age-info" id="ageInfo"></div>
+        </div>
+        <div class="button-group">
+          <button class="secondary small" onclick="exportData()">Export Data</button>
+          <button class="secondary small" onclick="resetApp()">Start Over</button>
+        </div>
+      </div>
+
+      <!-- Encouragement Message -->
+      <div class="encouragement-box">
+        <p class="encouragement-text" id="encouragementText"></p>
+      </div>
+
+      <!-- Dashboard Stats -->
+      <div class="dashboard">
+        <div class="stat-card">
+          <div class="stat-number" id="daysOld">0</div>
+          <div class="stat-label">Days Together</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="totalProgress">0</div>
+          <div class="stat-label">Progress Moments</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="totalMilestones">0</div>
+          <div class="stat-label">Milestones Reached</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="thisWeek">0</div>
+          <div class="stat-label">Wins This Week</div>
+        </div>
+      </div>
+
+      <!-- Add Progress Form -->
+      <div class="progress-form">
+        <h3 class="section-title">Record a Win</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+          Did something get a tiny bit easier today? Did your child do something new?
+          Write it down. These moments matter.
+        </p>
+
+        <div class="form-group">
+          <label for="entryType">Type</label>
+          <select id="entryType">
+            <option value="progress">Small Progress / Win</option>
+            <option value="milestone">Major Milestone</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="entryTitle">What Happened?</label>
+          <input type="text" id="entryTitle" placeholder="e.g., Slept 4 hours straight, First smile, Made it through the day">
+        </div>
+
+        <div class="form-group">
+          <label for="entryDescription">More Details (Optional)</label>
+          <textarea id="entryDescription" placeholder="How did it feel? What made this special?"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="entryDate">When?</label>
+          <input type="date" id="entryDate">
+        </div>
+
+        <button class="success" onclick="addEntry()">Save This Win</button>
+      </div>
+
+      <!-- Timeline Section -->
+      <div>
+        <h3 class="section-title">Your Journey So Far</h3>
+
+        <div class="filter-buttons">
+          <button class="filter-btn active" onclick="filterTimeline('all')">All</button>
+          <button class="filter-btn" onclick="filterTimeline('milestone')">Milestones</button>
+          <button class="filter-btn" onclick="filterTimeline('progress')">Progress Wins</button>
+        </div>
+
+        <div class="timeline" id="timeline">
+          <div class="empty-state">
+            <div class="empty-state-icon">🌱</div>
+            <h3>Your Journey Starts Here</h3>
+            <p>Add your first entry above to start tracking your progress.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Data structure
+    let appData = {
+      child: null,
+      entries: []
+    };
+
+    let currentFilter = 'all';
+
+    // Encouragement messages
+    const encouragements = [
+      "You're showing up every single day. That takes incredible strength.",
+      "These hard weeks won't last forever. You're making it through.",
+      "Every tiny bit of progress is proof that you're moving forward.",
+      "You're learning your child's needs more and more each day.",
+      "The fact that you're tracking this shows how much you care.",
+      "Brighter days are coming. You're building toward them right now.",
+      "You're doing the most important work in the world.",
+      "Your patience and love are making a difference, even when it doesn't feel like it.",
+      "Progress isn't always linear, but you're still moving forward.",
+      "You're exactly the parent your child needs.",
+      "Every day you get through is a victory worth celebrating.",
+      "The hard days make you stronger. You're already so much stronger than you know.",
+      "Your effort matters. Your presence matters. You matter.",
+      "Take it one moment at a time. You're doing beautifully.",
+      "This stage won't last forever, but the bond you're building will.",
+    ];
+
+    // Initialize app
+    function init() {
+      // Load data from localStorage
+      const saved = localStorage.getItem('parentingJourneyData');
+      if (saved) {
+        appData = JSON.parse(saved);
+        if (appData.child) {
+          showMainApp();
+        }
+      }
+
+      // Set today's date as default for entry
+      document.getElementById('entryDate').valueAsDate = new Date();
+    }
+
+    // Save child info
+    function saveChildInfo() {
+      const name = document.getElementById('childName').value.trim();
+      const birthday = document.getElementById('childBirthday').value;
+
+      if (!name || !birthday) {
+        alert('Please fill in both fields');
+        return;
+      }
+
+      appData.child = { name, birthday };
+      saveData();
+      showMainApp();
+    }
+
+    // Show main app
+    function showMainApp() {
+      document.getElementById('setupSection').classList.add('hidden');
+      document.getElementById('mainApp').classList.remove('hidden');
+
+      updateDisplay();
+    }
+
+    // Update all displays
+    function updateDisplay() {
+      const { child, entries } = appData;
+
+      // Update child info
+      document.getElementById('displayChildName').textContent = child.name;
+      updateAgeInfo();
+
+      // Update stats
+      const today = new Date();
+      const birthday = new Date(child.birthday);
+      const daysOld = Math.floor((today - birthday) / (1000 * 60 * 60 * 24));
+      document.getElementById('daysOld').textContent = daysOld;
+
+      const progressCount = entries.filter(e => e.type === 'progress').length;
+      const milestoneCount = entries.filter(e => e.type === 'milestone').length;
+      document.getElementById('totalProgress').textContent = progressCount;
+      document.getElementById('totalMilestones').textContent = milestoneCount;
+
+      // This week's entries
+      const weekAgo = new Date(today);
+      weekAgo.setDate(weekAgo.getDate() - 7);
+      const thisWeekCount = entries.filter(e => new Date(e.date) >= weekAgo).length;
+      document.getElementById('thisWeek').textContent = thisWeekCount;
+
+      // Random encouragement
+      const randomEncouragement = encouragements[Math.floor(Math.random() * encouragements.length)];
+      document.getElementById('encouragementText').textContent = randomEncouragement;
+
+      // Update timeline
+      updateTimeline();
+    }
+
+    // Update age info
+    function updateAgeInfo() {
+      const birthday = new Date(appData.child.birthday);
+      const today = new Date();
+
+      let years = today.getFullYear() - birthday.getFullYear();
+      let months = today.getMonth() - birthday.getMonth();
+      let days = today.getDate() - birthday.getDate();
+
+      if (days < 0) {
+        months--;
+        const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+        days += lastMonth.getDate();
+      }
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      let ageText = '';
+      if (years > 0) {
+        ageText = `${years} year${years > 1 ? 's' : ''}`;
+        if (months > 0) {
+          ageText += `, ${months} month${months > 1 ? 's' : ''}`;
+        }
+      } else if (months > 0) {
+        ageText = `${months} month${months > 1 ? 's' : ''}`;
+        if (days > 0 && months < 3) {
+          ageText += `, ${days} day${days > 1 ? 's' : ''}`;
+        }
+      } else {
+        ageText = `${days} day${days > 1 ? 's' : ''}`;
+      }
+
+      ageText += ' old';
+      document.getElementById('ageInfo').textContent = ageText;
+    }
+
+    // Add entry
+    function addEntry() {
+      const type = document.getElementById('entryType').value;
+      const title = document.getElementById('entryTitle').value.trim();
+      const description = document.getElementById('entryDescription').value.trim();
+      const date = document.getElementById('entryDate').value;
+
+      if (!title || !date) {
+        alert('Please add a title and date');
+        return;
+      }
+
+      const entry = {
+        id: Date.now(),
+        type,
+        title,
+        description,
+        date,
+        createdAt: new Date().toISOString()
+      };
+
+      appData.entries.unshift(entry);
+      saveData();
+
+      // Clear form
+      document.getElementById('entryTitle').value = '';
+      document.getElementById('entryDescription').value = '';
+      document.getElementById('entryDate').valueAsDate = new Date();
+      document.getElementById('entryType').value = 'progress';
+
+      updateDisplay();
+
+      // Scroll to timeline
+      document.getElementById('timeline').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Update timeline
+    function updateTimeline() {
+      const timeline = document.getElementById('timeline');
+      const entries = appData.entries.filter(e => {
+        if (currentFilter === 'all') return true;
+        return e.type === currentFilter;
+      });
+
+      if (entries.length === 0) {
+        timeline.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">🌱</div>
+            <h3>No entries yet</h3>
+            <p>Add your first entry above to start tracking your progress.</p>
+          </div>
+        `;
+        return;
+      }
+
+      timeline.innerHTML = entries.map(entry => {
+        const entryDate = new Date(entry.date);
+        const formattedDate = entryDate.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        });
+
+        const icon = entry.type === 'milestone' ? '⭐' : '✨';
+
+        return `
+          <div class="timeline-item ${entry.type}">
+            <div class="timeline-icon">${icon}</div>
+            <div class="timeline-header">
+              <div class="timeline-title">${entry.title}</div>
+              <div class="timeline-date">${formattedDate}</div>
+            </div>
+            ${entry.description ? `<div class="timeline-description">${entry.description}</div>` : ''}
+            <span class="timeline-type ${entry.type}">
+              ${entry.type === 'milestone' ? 'Milestone' : 'Progress'}
+            </span>
+            <button class="delete-btn small" onclick="deleteEntry(${entry.id})">Delete</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Filter timeline
+    function filterTimeline(filter) {
+      currentFilter = filter;
+
+      // Update button states
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      updateTimeline();
+    }
+
+    // Delete entry
+    function deleteEntry(id) {
+      if (!confirm('Are you sure you want to delete this entry?')) return;
+
+      appData.entries = appData.entries.filter(e => e.id !== id);
+      saveData();
+      updateDisplay();
+    }
+
+    // Export data
+    function exportData() {
+      const dataStr = JSON.stringify(appData, null, 2);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `parenting-journey-${appData.child.name}-${new Date().toISOString().split('T')[0]}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Reset app
+    function resetApp() {
+      if (!confirm('This will delete all your data. Are you sure?')) return;
+
+      localStorage.removeItem('parentingJourneyData');
+      location.reload();
+    }
+
+    // Save to localStorage
+    function saveData() {
+      localStorage.setItem('parentingJourneyData', JSON.stringify(appData));
+    }
+
+    // Initialize on load
+    init();
+  </script>
+</body>
+</html>
