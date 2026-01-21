@@ -15,6 +15,7 @@
       --accent-green: #81c995;
       --accent-purple: #c58af9;
       --accent-orange: #faa356;
+      --accent-yellow: #fdd663;
       --border: #3c4043;
       --success: #34a853;
       --warning: #fbbc04;
@@ -137,7 +138,7 @@
 
     .dashboard {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
       margin-bottom: 30px;
     }
@@ -160,6 +161,7 @@
     .stat-card:nth-child(2) .stat-number { color: var(--accent-green); }
     .stat-card:nth-child(3) .stat-number { color: var(--accent-purple); }
     .stat-card:nth-child(4) .stat-number { color: var(--accent-orange); }
+    .stat-card:nth-child(5) .stat-number { color: var(--accent-yellow); }
 
     .stat-label {
       color: var(--text-secondary);
@@ -188,6 +190,13 @@
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      font-style: italic;
     }
 
     .progress-form {
@@ -347,6 +356,212 @@
       border-color: var(--accent-blue);
     }
 
+    /* Milestone Checklist Styles */
+    .milestone-section {
+      background: var(--bg-secondary);
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 30px;
+    }
+
+    .milestone-categories {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .category-btn {
+      padding: 10px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .category-btn.active {
+      background: var(--accent-purple);
+      color: white;
+      border-color: var(--accent-purple);
+    }
+
+    .milestone-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .milestone-item {
+      background: var(--bg-card);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: start;
+      gap: 12px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .milestone-item:hover {
+      border-color: var(--accent-blue);
+    }
+
+    .milestone-item.checked {
+      background: rgba(129, 201, 149, 0.1);
+      border-color: var(--accent-green);
+    }
+
+    .milestone-checkbox {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 2px;
+    }
+
+    .milestone-item.checked .milestone-checkbox {
+      background: var(--accent-green);
+      border-color: var(--accent-green);
+    }
+
+    .milestone-item.checked .milestone-checkbox::after {
+      content: '✓';
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .milestone-content {
+      flex: 1;
+    }
+
+    .milestone-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .milestone-item.checked .milestone-title {
+      color: var(--accent-green);
+    }
+
+    .milestone-age {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .milestone-description {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+
+    .milestone-resources {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .resource-link {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      background: rgba(138, 180, 248, 0.15);
+      color: var(--accent-blue);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .resource-link:hover {
+      background: rgba(138, 180, 248, 0.25);
+    }
+
+    .coming-soon-box {
+      background: linear-gradient(135deg, rgba(253, 214, 99, 0.2) 0%, rgba(250, 163, 86, 0.2) 100%);
+      border: 2px solid rgba(253, 214, 99, 0.3);
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .coming-soon-title {
+      font-size: 1.3rem;
+      color: var(--accent-yellow);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .coming-soon-subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .upcoming-milestones {
+      display: grid;
+      gap: 10px;
+    }
+
+    .upcoming-milestone {
+      background: var(--bg-card);
+      padding: 12px 16px;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent-yellow);
+    }
+
+    .upcoming-milestone-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .upcoming-milestone-age {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .section-card {
+      background: var(--bg-secondary);
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 30px;
+    }
+
+    .info-banner {
+      background: rgba(138, 180, 248, 0.1);
+      border-left: 4px solid var(--accent-blue);
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .celebration {
+      animation: celebrate 0.5s ease-out;
+    }
+
+    @keyframes celebrate {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); background: rgba(129, 201, 149, 0.3); }
+      100% { transform: scale(1); }
+    }
+
     @media (max-width: 768px) {
       h1 {
         font-size: 1.8rem;
@@ -358,6 +573,11 @@
 
       .encouragement-text {
         font-size: 1.1rem;
+      }
+
+      .milestone-categories {
+        overflow-x: auto;
+        flex-wrap: nowrap;
       }
     }
   </style>
@@ -416,12 +636,16 @@
           <div class="stat-label">Days Together</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number" id="totalProgress">0</div>
-          <div class="stat-label">Progress Moments</div>
+          <div class="stat-number" id="milestonesChecked">0</div>
+          <div class="stat-label">Milestones Checked</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number" id="totalMilestones">0</div>
-          <div class="stat-label">Milestones Reached</div>
+          <div class="stat-number" id="completionRate">0%</div>
+          <div class="stat-label">Age Group Progress</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="totalProgress">0</div>
+          <div class="stat-label">Custom Entries</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" id="thisWeek">0</div>
@@ -429,25 +653,47 @@
         </div>
       </div>
 
-      <!-- Add Progress Form -->
-      <div class="progress-form">
-        <h3 class="section-title">Record a Win</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 20px;">
-          Did something get a tiny bit easier today? Did your child do something new?
-          Write it down. These moments matter.
+      <!-- Coming Soon Section -->
+      <div class="coming-soon-box" id="comingSoonSection">
+        <div class="coming-soon-title">
+          🌟 What's Coming Next
+        </div>
+        <div class="coming-soon-subtitle">
+          Milestones to look forward to - brighter days are ahead!
+        </div>
+        <div class="upcoming-milestones" id="upcomingMilestones"></div>
+      </div>
+
+      <!-- Milestone Checklist -->
+      <div class="milestone-section">
+        <h3 class="section-title">Milestone Tracker</h3>
+        <div class="info-banner">
+          💡 <strong>Remember:</strong> Every child develops at their own pace. These are typical ranges, not strict deadlines.
+          Check off milestones as your child reaches them, and celebrate every single one!
+        </div>
+
+        <div class="milestone-categories" id="milestoneCategories"></div>
+        <div class="milestone-list" id="milestoneList"></div>
+      </div>
+
+      <!-- Add Custom Entry Form -->
+      <div class="section-card">
+        <h3 class="section-title">Add Your Own Win</h3>
+        <p class="section-subtitle">
+          Track something personal that's not in the milestone list - every victory counts!
         </p>
 
         <div class="form-group">
           <label for="entryType">Type</label>
           <select id="entryType">
-            <option value="progress">Small Progress / Win</option>
-            <option value="milestone">Major Milestone</option>
+            <option value="progress">Daily Win / Progress</option>
+            <option value="milestone">Personal Milestone</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="entryTitle">What Happened?</label>
-          <input type="text" id="entryTitle" placeholder="e.g., Slept 4 hours straight, First smile, Made it through the day">
+          <input type="text" id="entryTitle" placeholder="e.g., First successful grocery trip, Made it through a tough day">
         </div>
 
         <div class="form-group">
@@ -460,11 +706,11 @@
           <input type="date" id="entryDate">
         </div>
 
-        <button class="success" onclick="addEntry()">Save This Win</button>
+        <button class="success" onclick="addCustomEntry()">Save This Win</button>
       </div>
 
       <!-- Timeline Section -->
-      <div>
+      <div class="section-card">
         <h3 class="section-title">Your Journey So Far</h3>
 
         <div class="filter-buttons">
@@ -477,7 +723,7 @@
           <div class="empty-state">
             <div class="empty-state-icon">🌱</div>
             <h3>Your Journey Starts Here</h3>
-            <p>Add your first entry above to start tracking your progress.</p>
+            <p>Check off milestones or add custom entries to start tracking your progress.</p>
           </div>
         </div>
       </div>
@@ -488,10 +734,12 @@
     // Data structure
     let appData = {
       child: null,
-      entries: []
+      entries: [],
+      checkedMilestones: []
     };
 
     let currentFilter = 'all';
+    let currentCategory = 'current';
 
     // Encouragement messages
     const encouragements = [
@@ -512,18 +760,200 @@
       "This stage won't last forever, but the bond you're building will.",
     ];
 
+    // Comprehensive milestone database
+    const milestones = {
+      survival: [
+        { id: 's1', title: 'Made it through the day', age: 'Any age', category: 'survival', description: 'You survived another day. That counts.', resources: [] },
+        { id: 's2', title: 'First successful outing alone', age: 'Any age', category: 'survival', description: 'You made it out of the house!', resources: [] },
+        { id: 's3', title: 'First full night of sleep', age: '0-12 months', category: 'survival', description: 'You got a full night\'s sleep (however many hours that was)', resources: [] },
+        { id: 's4', title: 'Successfully calmed a crying spell', age: 'Any age', category: 'survival', description: 'You figured out what they needed', resources: [] },
+        { id: 's5', title: 'Had help and actually accepted it', age: 'Any age', category: 'survival', description: 'Asking for help is strength', resources: [] },
+        { id: 's6', title: 'Showered today', age: 'Any age', category: 'survival', description: 'Self-care counts as a win', resources: [] },
+        { id: 's7', title: 'Fed yourself a real meal', age: 'Any age', category: 'survival', description: 'Not just snacks - an actual meal!', resources: [] },
+        { id: 's8', title: 'Left the house for something non-essential', age: 'Any age', category: 'survival', description: 'Coffee run? Walk? You did it!', resources: [] },
+      ],
+      newborn: [
+        { id: 'n1', title: 'First smile', age: '6-8 weeks', category: 'newborn', description: 'That first real smile that makes it all worth it', resources: [
+          { title: 'AAP: Baby\'s First Smile', url: 'https://www.healthychildren.org/English/ages-stages/baby/Pages/Emotional-and-Social-Development-Birth-to-3-Months.aspx' },
+          { title: 'Zero to Three: Social Development', url: 'https://www.zerotothree.org/resource/babys-sense-of-social-development/' }
+        ]},
+        { id: 'n2', title: 'Holds head up briefly', age: '1 month', category: 'newborn', description: 'Early neck strength development', resources: [
+          { title: 'CDC: 2 Month Milestones', url: 'https://www.cdc.gov/ncbddd/actearly/milestones/milestones-2mo.html' }
+        ]},
+        { id: 'n3', title: 'Follows objects with eyes', age: '2-3 months', category: 'newborn', description: 'Tracking movement visually', resources: [] },
+        { id: 'n4', title: 'Coos and makes sounds', age: '2-3 months', category: 'newborn', description: 'Early language development', resources: [
+          { title: 'Lucie\'s List: Baby Development', url: 'https://www.lucieslist.com/baby-development/' }
+        ]},
+        { id: 'n5', title: 'Brings hands to mouth', age: '2-3 months', category: 'newborn', description: 'Self-soothing begins', resources: [] },
+        { id: 'n6', title: 'Recognizes familiar faces', age: '2-3 months', category: 'newborn', description: 'They know you!', resources: [] },
+      ],
+      infant36: [
+        { id: 'i1', title: 'Rolls over (front to back)', age: '4-6 months', category: 'infant36', description: 'First major motor milestone', resources: [
+          { title: 'CDC: 4 Month Milestones', url: 'https://www.cdc.gov/ncbddd/actearly/milestones/milestones-4mo.html' },
+          { title: 'ParentData: Development Timeline', url: 'https://parentdata.org/' }
+        ]},
+        { id: 'i2', title: 'Sits without support', age: '6 months', category: 'infant36', description: 'Independent sitting', resources: [
+          { title: 'AAP: Movement Milestones', url: 'https://www.healthychildren.org/English/ages-stages/baby/Pages/Movement-Birth-to-Three-Months.aspx' }
+        ]},
+        { id: 'i3', title: 'Babbles (ma-ma, da-da)', age: '6-9 months', category: 'infant36', description: 'Pre-language sounds', resources: [] },
+        { id: 'i4', title: 'Responds to their name', age: '6-9 months', category: 'infant36', description: 'Name recognition', resources: [] },
+        { id: 'i5', title: 'Shows stranger anxiety', age: '6-9 months', category: 'infant36', description: 'Normal developmental stage', resources: [
+          { title: 'Zero to Three: Stranger Anxiety', url: 'https://www.zerotothree.org/resource/tips-on-helping-your-child-through-stranger-anxiety/' }
+        ]},
+        { id: 'i6', title: 'Plays peek-a-boo', age: '6-9 months', category: 'infant36', description: 'Understanding object permanence', resources: [] },
+      ],
+      infant69: [
+        { id: 'i7', title: 'Crawls', age: '7-10 months', category: 'infant69', description: 'Mobile at last!', resources: [
+          { title: 'CDC: 9 Month Milestones', url: 'https://www.cdc.gov/ncbddd/actearly/milestones/milestones-9mo.html' }
+        ]},
+        { id: 'i8', title: 'Pulls to standing', age: '8-10 months', category: 'infant69', description: 'Getting ready to walk', resources: [] },
+        { id: 'i9', title: 'Says first word', age: '9-14 months', category: 'infant69', description: 'First real word!', resources: [
+          { title: 'AAP: Language Development', url: 'https://www.healthychildren.org/English/ages-stages/baby/Pages/Language-Development-12-to-24-Months.aspx' }
+        ]},
+        { id: 'i10', title: 'Waves bye-bye', age: '9 months', category: 'infant69', description: 'Copying gestures', resources: [] },
+        { id: 'i11', title: 'Finds hidden objects', age: '8-10 months', category: 'infant69', description: 'Object permanence mastered', resources: [] },
+        { id: 'i12', title: 'Finger feeds themselves', age: '8-12 months', category: 'infant69', description: 'Self-feeding begins', resources: [
+          { title: 'Lucie\'s List: Starting Solids', url: 'https://www.lucieslist.com/guides/starting-solids/' }
+        ]},
+      ],
+      toddler12: [
+        { id: 't1', title: 'Takes first steps', age: '9-15 months', category: 'toddler12', description: 'Walking begins!', resources: [
+          { title: 'CDC: 12 Month Milestones', url: 'https://www.cdc.gov/ncbddd/actearly/milestones/milestones-1yr.html' },
+          { title: 'ParentData: When Will My Baby Walk?', url: 'https://parentdata.org/' }
+        ]},
+        { id: 't2', title: 'Uses 3-5 words consistently', age: '12-15 months', category: 'toddler12', description: 'Vocabulary building', resources: [] },
+        { id: 't3', title: 'Drinks from a cup', age: '12-15 months', category: 'toddler12', description: 'New drinking skill', resources: [] },
+        { id: 't4', title: 'Points to ask for things', age: '12 months', category: 'toddler12', description: 'Communication through gestures', resources: [] },
+        { id: 't5', title: 'Walks independently', age: '12-18 months', category: 'toddler12', description: 'Confident walking', resources: [] },
+        { id: 't6', title: 'Stacks 2-3 blocks', age: '13-15 months', category: 'toddler12', description: 'Fine motor skills', resources: [] },
+      ],
+      toddler18: [
+        { id: 't7', title: 'Runs', age: '18-24 months', category: 'toddler18', description: 'Running everywhere!', resources: [
+          { title: 'CDC: 18 Month Milestones', url: 'https://www.cdc.gov/ncbddd/actearly/milestones/milestones-18mo.html' }
+        ]},
+        { id: 't8', title: 'Uses 10-20 words', age: '18 months', category: 'toddler18', description: 'Language explosion coming', resources: [] },
+        { id: 't9', title: 'Feeds self with utensils', age: '18-24 months', category: 'toddler18', description: 'Independent eating', resources: [] },
+        { id: 't10', title: 'Kicks a ball', age: '18-24 months', category: 'toddler18', description: 'Gross motor coordination', resources: [] },
+        { id: 't11', title: 'Follows 2-step instructions', age: '18-24 months', category: 'toddler18', description: 'Understanding increases', resources: [] },
+        { id: 't12', title: 'Shows defiance (says "no")', age: '18-24 months', category: 'toddler18', description: 'Asserting independence (yes, it\'s normal!)', resources: [
+          { title: 'Zero to Three: The Toddler Years', url: 'https://www.zerotothree.org/resource/the-toddler-years/' }
+        ]},
+      ],
+      toddler24: [
+        { id: 't13', title: 'Uses 50+ words', age: '24 months', category: 'toddler24', description: 'Vocabulary boom', resources: [
+          { title: 'CDC: 2 Year Milestones', url: 'https://www.cdc.gov/ncbddd/actearly/milestones/milestones-2yr.html' }
+        ]},
+        { id: 't14', title: 'Combines 2 words', age: '24 months', category: 'toddler24', description: 'Making phrases', resources: [] },
+        { id: 't15', title: 'Jumps with both feet', age: '24-30 months', category: 'toddler24', description: 'Jumping skills', resources: [] },
+        { id: 't16', title: 'Shows interest in potty training', age: '24-36 months', category: 'toddler24', description: 'Potty awareness begins', resources: [
+          { title: 'AAP: Potty Training', url: 'https://www.healthychildren.org/English/ages-stages/toddler/toilet-training/Pages/default.aspx' },
+          { title: 'Lucie\'s List: Potty Training Guide', url: 'https://www.lucieslist.com/guides/potty-training/' }
+        ]},
+        { id: 't17', title: 'Plays alongside other children', age: '24-30 months', category: 'toddler24', description: 'Parallel play', resources: [] },
+        { id: 't18', title: 'Draws simple shapes', age: '24-36 months', category: 'toddler24', description: 'Early drawing skills', resources: [] },
+      ],
+      preschool: [
+        { id: 'p1', title: 'Pedals a tricycle', age: '3 years', category: 'preschool', description: 'Riding skills!', resources: [
+          { title: 'CDC: 3 Year Milestones', url: 'https://www.cdc.gov/ncbddd/actearly/milestones/milestones-3yr.html' }
+        ]},
+        { id: 'p2', title: 'Speaks in sentences', age: '3 years', category: 'preschool', description: 'Full conversations', resources: [] },
+        { id: 'p3', title: 'Plays cooperatively with others', age: '3-4 years', category: 'preschool', description: 'True social play', resources: [] },
+        { id: 'p4', title: 'Uses toilet independently', age: '3-4 years', category: 'preschool', description: 'Potty trained!', resources: [] },
+        { id: 'p5', title: 'Dresses themselves (mostly)', age: '3-4 years', category: 'preschool', description: 'Independence growing', resources: [] },
+        { id: 'p6', title: 'Understands time concepts', age: '3-4 years', category: 'preschool', description: 'Yesterday, today, tomorrow', resources: [] },
+      ]
+    };
+
+    // Get child's age in months
+    function getAgeInMonths() {
+      if (!appData.child) return 0;
+      const birthday = new Date(appData.child.birthday);
+      const today = new Date();
+      const months = (today.getFullYear() - birthday.getFullYear()) * 12 + (today.getMonth() - birthday.getMonth());
+      return months;
+    }
+
+    // Get relevant milestone categories based on age
+    function getRelevantCategories() {
+      const ageMonths = getAgeInMonths();
+      const categories = [
+        { id: 'survival', label: 'Daily Survival Wins', icon: '💪' },
+        { id: 'current', label: 'For Your Child\'s Age', icon: '🎯' },
+        { id: 'all', label: 'All Milestones', icon: '📋' },
+      ];
+
+      return categories;
+    }
+
+    // Get milestones for current age
+    function getCurrentAgeMilestones() {
+      const ageMonths = getAgeInMonths();
+      let relevantMilestones = [];
+
+      if (ageMonths < 3) {
+        relevantMilestones = milestones.newborn;
+      } else if (ageMonths < 6) {
+        relevantMilestones = [...milestones.newborn, ...milestones.infant36];
+      } else if (ageMonths < 9) {
+        relevantMilestones = [...milestones.infant36, ...milestones.infant69];
+      } else if (ageMonths < 12) {
+        relevantMilestones = [...milestones.infant69, ...milestones.toddler12];
+      } else if (ageMonths < 18) {
+        relevantMilestones = [...milestones.toddler12, ...milestones.toddler18];
+      } else if (ageMonths < 24) {
+        relevantMilestones = [...milestones.toddler18, ...milestones.toddler24];
+      } else if (ageMonths < 36) {
+        relevantMilestones = [...milestones.toddler24, ...milestones.preschool];
+      } else {
+        relevantMilestones = milestones.preschool;
+      }
+
+      return relevantMilestones;
+    }
+
+    // Get upcoming milestones
+    function getUpcomingMilestones() {
+      const ageMonths = getAgeInMonths();
+      let upcomingMilestones = [];
+
+      if (ageMonths < 3) {
+        upcomingMilestones = milestones.infant36.slice(0, 3);
+      } else if (ageMonths < 6) {
+        upcomingMilestones = milestones.infant69.slice(0, 3);
+      } else if (ageMonths < 9) {
+        upcomingMilestones = milestones.toddler12.slice(0, 3);
+      } else if (ageMonths < 12) {
+        upcomingMilestones = milestones.toddler18.slice(0, 3);
+      } else if (ageMonths < 18) {
+        upcomingMilestones = milestones.toddler24.slice(0, 3);
+      } else if (ageMonths < 24) {
+        upcomingMilestones = milestones.preschool.slice(0, 3);
+      } else {
+        upcomingMilestones = [];
+      }
+
+      return upcomingMilestones;
+    }
+
+    // Get all milestones
+    function getAllMilestones() {
+      return Object.values(milestones).flat();
+    }
+
     // Initialize app
     function init() {
-      // Load data from localStorage
       const saved = localStorage.getItem('parentingJourneyData');
       if (saved) {
         appData = JSON.parse(saved);
+        // Ensure checkedMilestones exists
+        if (!appData.checkedMilestones) {
+          appData.checkedMilestones = [];
+        }
         if (appData.child) {
           showMainApp();
         }
       }
 
-      // Set today's date as default for entry
       document.getElementById('entryDate').valueAsDate = new Date();
     }
 
@@ -538,6 +968,7 @@
       }
 
       appData.child = { name, birthday };
+      appData.checkedMilestones = [];
       saveData();
       showMainApp();
     }
@@ -546,15 +977,13 @@
     function showMainApp() {
       document.getElementById('setupSection').classList.add('hidden');
       document.getElementById('mainApp').classList.remove('hidden');
-
       updateDisplay();
     }
 
     // Update all displays
     function updateDisplay() {
-      const { child, entries } = appData;
+      const { child, entries, checkedMilestones } = appData;
 
-      // Update child info
       document.getElementById('displayChildName').textContent = child.name;
       updateAgeInfo();
 
@@ -564,22 +993,33 @@
       const daysOld = Math.floor((today - birthday) / (1000 * 60 * 60 * 24));
       document.getElementById('daysOld').textContent = daysOld;
 
-      const progressCount = entries.filter(e => e.type === 'progress').length;
-      const milestoneCount = entries.filter(e => e.type === 'milestone').length;
-      document.getElementById('totalProgress').textContent = progressCount;
-      document.getElementById('totalMilestones').textContent = milestoneCount;
+      const currentMilestones = getCurrentAgeMilestones();
+      const checkedCount = checkedMilestones.length;
+      const completionRate = currentMilestones.length > 0
+        ? Math.round((checkedMilestones.filter(id => currentMilestones.find(m => m.id === id)).length / currentMilestones.length) * 100)
+        : 0;
 
-      // This week's entries
+      document.getElementById('milestonesChecked').textContent = checkedCount;
+      document.getElementById('completionRate').textContent = completionRate + '%';
+
+      const progressCount = entries.filter(e => e.type === 'progress').length;
+      document.getElementById('totalProgress').textContent = progressCount;
+
       const weekAgo = new Date(today);
       weekAgo.setDate(weekAgo.getDate() - 7);
-      const thisWeekCount = entries.filter(e => new Date(e.date) >= weekAgo).length;
+      const thisWeekCount = entries.filter(e => new Date(e.date) >= weekAgo).length +
+                            checkedMilestones.filter(id => {
+                              const milestone = getAllMilestones().find(m => m.id === id);
+                              return milestone && milestone.checkedDate && new Date(milestone.checkedDate) >= weekAgo;
+                            }).length;
       document.getElementById('thisWeek').textContent = thisWeekCount;
 
-      // Random encouragement
       const randomEncouragement = encouragements[Math.floor(Math.random() * encouragements.length)];
       document.getElementById('encouragementText').textContent = randomEncouragement;
 
-      // Update timeline
+      updateUpcomingMilestones();
+      updateMilestoneCategories();
+      updateMilestoneList();
       updateTimeline();
     }
 
@@ -622,8 +1062,124 @@
       document.getElementById('ageInfo').textContent = ageText;
     }
 
-    // Add entry
-    function addEntry() {
+    // Update upcoming milestones
+    function updateUpcomingMilestones() {
+      const upcoming = getUpcomingMilestones();
+      const container = document.getElementById('upcomingMilestones');
+
+      if (upcoming.length === 0) {
+        document.getElementById('comingSoonSection').classList.add('hidden');
+        return;
+      }
+
+      document.getElementById('comingSoonSection').classList.remove('hidden');
+      container.innerHTML = upcoming.map(m => `
+        <div class="upcoming-milestone">
+          <div class="upcoming-milestone-title">${m.title}</div>
+          <div class="upcoming-milestone-age">Typically around ${m.age}</div>
+        </div>
+      `).join('');
+    }
+
+    // Update milestone categories
+    function updateMilestoneCategories() {
+      const categories = getRelevantCategories();
+      const container = document.getElementById('milestoneCategories');
+
+      container.innerHTML = categories.map(cat => `
+        <button class="category-btn ${cat.id === currentCategory ? 'active' : ''}"
+                onclick="selectCategory('${cat.id}')">
+          ${cat.icon} ${cat.label}
+        </button>
+      `).join('');
+    }
+
+    // Select category
+    function selectCategory(categoryId) {
+      currentCategory = categoryId;
+      updateMilestoneCategories();
+      updateMilestoneList();
+    }
+
+    // Update milestone list
+    function updateMilestoneList() {
+      const container = document.getElementById('milestoneList');
+      let milestonesToShow = [];
+
+      if (currentCategory === 'survival') {
+        milestonesToShow = milestones.survival;
+      } else if (currentCategory === 'current') {
+        milestonesToShow = getCurrentAgeMilestones();
+      } else {
+        milestonesToShow = getAllMilestones();
+      }
+
+      if (milestonesToShow.length === 0) {
+        container.innerHTML = '<div class="empty-state"><p>No milestones in this category yet.</p></div>';
+        return;
+      }
+
+      container.innerHTML = milestonesToShow.map(m => {
+        const isChecked = appData.checkedMilestones.includes(m.id);
+        return `
+          <div class="milestone-item ${isChecked ? 'checked' : ''}" onclick="toggleMilestone('${m.id}')">
+            <div class="milestone-checkbox"></div>
+            <div class="milestone-content">
+              <div class="milestone-title">${m.title}</div>
+              <div class="milestone-age">${m.age}</div>
+              ${m.description ? `<div class="milestone-description">${m.description}</div>` : ''}
+              ${m.resources && m.resources.length > 0 ? `
+                <div class="milestone-resources">
+                  ${m.resources.map(r => `
+                    <a href="${r.url}" target="_blank" class="resource-link" onclick="event.stopPropagation()">
+                      ${r.title}
+                    </a>
+                  `).join('')}
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Toggle milestone
+    function toggleMilestone(milestoneId) {
+      const index = appData.checkedMilestones.indexOf(milestoneId);
+      const milestone = getAllMilestones().find(m => m.id === milestoneId);
+
+      if (index === -1) {
+        appData.checkedMilestones.push(milestoneId);
+
+        // Add to timeline as well
+        const entry = {
+          id: Date.now(),
+          type: 'milestone',
+          title: milestone.title,
+          description: milestone.description,
+          date: new Date().toISOString().split('T')[0],
+          createdAt: new Date().toISOString(),
+          milestoneId: milestoneId
+        };
+        appData.entries.unshift(entry);
+
+        // Celebration animation
+        event.currentTarget.classList.add('celebration');
+        setTimeout(() => {
+          event.currentTarget.classList.remove('celebration');
+        }, 500);
+      } else {
+        appData.checkedMilestones.splice(index, 1);
+        // Remove from timeline
+        appData.entries = appData.entries.filter(e => e.milestoneId !== milestoneId);
+      }
+
+      saveData();
+      updateDisplay();
+    }
+
+    // Add custom entry
+    function addCustomEntry() {
       const type = document.getElementById('entryType').value;
       const title = document.getElementById('entryTitle').value.trim();
       const description = document.getElementById('entryDescription').value.trim();
@@ -653,8 +1209,6 @@
       document.getElementById('entryType').value = 'progress';
 
       updateDisplay();
-
-      // Scroll to timeline
       document.getElementById('timeline').scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -671,7 +1225,7 @@
           <div class="empty-state">
             <div class="empty-state-icon">🌱</div>
             <h3>No entries yet</h3>
-            <p>Add your first entry above to start tracking your progress.</p>
+            <p>Check off milestones or add custom entries to start tracking your progress.</p>
           </div>
         `;
         return;
@@ -698,7 +1252,7 @@
             <span class="timeline-type ${entry.type}">
               ${entry.type === 'milestone' ? 'Milestone' : 'Progress'}
             </span>
-            <button class="delete-btn small" onclick="deleteEntry(${entry.id})">Delete</button>
+            ${!entry.milestoneId ? `<button class="delete-btn small" onclick="deleteEntry(${entry.id})">Delete</button>` : ''}
           </div>
         `;
       }).join('');
@@ -707,20 +1261,16 @@
     // Filter timeline
     function filterTimeline(filter) {
       currentFilter = filter;
-
-      // Update button states
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
       });
       event.target.classList.add('active');
-
       updateTimeline();
     }
 
     // Delete entry
     function deleteEntry(id) {
       if (!confirm('Are you sure you want to delete this entry?')) return;
-
       appData.entries = appData.entries.filter(e => e.id !== id);
       saveData();
       updateDisplay();
@@ -741,7 +1291,6 @@
     // Reset app
     function resetApp() {
       if (!confirm('This will delete all your data. Are you sure?')) return;
-
       localStorage.removeItem('parentingJourneyData');
       location.reload();
     }
